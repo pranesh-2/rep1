@@ -1,0 +1,95 @@
+2.Git commands 
+(create repo & text file in github),create empty folder in desktop.
+
+Git clone (url)
+Ls
+Cd (rep name)
+Ls -la
+Git log
+Git log --patch -1
+Vim (text file)
+Git status
+
+4.Jenkins With maven
+Manage jenkins ->tools ->maven(name)
+
+Code:
+pipeline {
+    agent any
+
+    tools {
+        // Install the Maven version configured as "Maven" and add it to the path.
+        maven "Maven3"
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                // Get some code from a GitHub repository
+                git 'https://github.com/SashiDuratech/springboot2-jpa-h2-crud-example_withSwagger.git'
+
+                bat "mvn -Dmaven.test.failure.ignore=true clean package"
+            }
+
+            post {
+                // If Maven was able to run the tests, even if some of the test
+                // failed, record the test results and archive the jar file.
+                success {
+                 archiveArtifacts 'target/*.jar'
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+5.Docker image
+ 
+Login docker 
+
+Cmd code:
+
+Mkdir simple
+Cd simple
+
+Save the text file : name-(dockerfile)
+
+FROM ubuntu:18.04
+CMD ["echo","Welcome to my first hello image"]
+
+Docker build -t simplesnr:1.0 .
+Docker images
+Docker run simplesnr:1.0
+
+
+
+6.Docker image and deploy in container (8th same)
+
+Login docker
+
+Cmd code:
+
+Docker run -d -p 8082:80 httpd
+Docker ps
+Docker exec -it (id) bash
+Echo “text”>index.html
+
+Open webpage: localhost:8082
+
+9.Kubernetes
+ Follow the 5th program and save the yaml files in the same created folder (eg:simple)
+ 
+Code:
+
+Kubectl apply -f deployment.yaml
+Kubectl get deployments
+Kubectl get pods
+Kubectl apply -f service.yaml
+Kubectl get services
+
+
+
