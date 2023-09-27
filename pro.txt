@@ -76,6 +76,7 @@ Cmd code:
 Docker run -d -p 8082:80 httpd
 Docker ps
 Docker exec -it (id) bash
+cd htdocs/
 Echo “text”>index.html
 
 Open webpage: localhost:8082
