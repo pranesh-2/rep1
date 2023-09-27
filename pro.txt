@@ -84,7 +84,9 @@ Open webpage: localhost:8082
  Follow the 5th program and save the yaml files in the same created folder (eg:simple)
  
 Code:
-
+docker build -t simplesnr:1.0 .
+docker images
+docker run simplesnr:1.0
 Kubectl apply -f deployment.yaml
 Kubectl get deployments
 Kubectl get pods
